@@ -1,0 +1,192 @@
+:root {
+/* Default Theme (Theme 1) */
+    --background: #3b4664;
+    --theme-color: #cf4032;
+    --header-font: #ffffff;
+    --buttons: #252d44;
+    --button: #eae3dc;
+    --button-shadow: ;
+    --button-font: #191f32;
+    --button-hover: #ffffff;
+    --button-del: #647298;
+    --button-del-font: #FFFFFF;
+    --result: #191f32;
+    --result-font: #ffffff;
+}
+
+body[data-theme="theme2"] {
+    --background: #e5e4e1;
+    --theme-color: #ff8b38;
+    --header-font: #000000;
+    --buttons: #d4cccf;
+    --button: #e5e4e1;
+    --button-shadow: #b7b0ad;
+    --button-font: #000000;
+    --button-hover: #ffffff;
+    --button-del: #67b3ba;
+    --button-del-font: #ffffff;
+    --result: #eeeeee;
+    --result-font: #000000;
+}
+
+body[data-theme="theme3"] {
+    --background: #17062a;
+    --theme-color: #94fff9;
+    --header-font: #fce14c;
+    --buttons: #1e0836;
+    --button: #341a51;
+    --button-shadow: #602876;
+    --button-font: #fce14c;
+    --button-hover: #804ec2;
+    --button-del: #6934ae;
+    --button-del-font: #ffffff;
+    --result: #1e0836;
+    --result-font: #fce14c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "League Spartan", sans-serif;
+    background-color: var(--background);
+    transition: .5s;
+}
+
+#calculator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+}
+
+#header {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--header-font);
+}
+
+#header #title h2 {
+    font-size: 35px;
+}
+
+#themes {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#themes .themes-nums {
+    display: flex;
+    align-self: end;
+    gap: 28px;
+}
+
+#themes .themes-nums p {
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#themes .button-change {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#themes .button-change p {
+    font-size: 18px;
+}
+
+#themes .button-change .change-mode {
+    background-color: var(--buttons);
+    width: 90px;
+    height: 28px;
+    border-radius: 100px;
+    cursor: pointer;
+    position: relative;
+}
+
+#themes .button-change .circle {
+    background-color: var(--theme-color);
+    width: 28px;
+    height: 28px;
+    border-radius: 100px;
+    transform: scale(.7);
+    position: absolute;
+    transition: .5s;
+}
+
+#result {
+    width: 100%;
+    background-color: var(--result);
+    color: var(--result-font);
+    padding: 18px 10px;
+    border-radius: 10px;
+    height: 65px;
+}
+
+#result h1 {
+    font-size: 38px;
+    text-align: end;
+}
+
+#buttons {
+    min-width: 100%;
+    background-color: var(--buttons);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 18px;
+    margin: 10px;
+    border-radius: 10px;
+    gap: 15px;
+}
+
+#buttons button:hover.num {
+    background-color: var(--button-hover);
+}
+
+#buttons .reset, .result {
+    grid-column: span 2;
+}
+
+#buttons .result {
+    background-color: var(--theme-color);
+    color: var(--button-del-font);
+}
+
+#buttons .del, #buttons .reset {
+    color: var(--button-del-font);
+    background-color: var(--button-del);
+}
+
+#buttons button {
+    padding: 15px 10px;
+    font-size: 22px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: 800;
+    background-color: var(--button);
+    color: var(--button-font);
+}
+
+.attribution {
+    color: var(--header-font);
+    font-size: 20px;
+}
+
+.attribution a {
+    color: var(--theme-color);
+}
