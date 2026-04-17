@@ -5,7 +5,9 @@
     --header-font: #ffffff;
     --buttons: #252d44;
     --button: #eae3dc;
-    --button-shadow: ;
+    --shadow-num: #b7b0ad;
+    --shadow-del: #505a77;
+    --shadow-result: #a3372d;
     --button-font: #191f32;
     --button-hover: #ffffff;
     --button-del: #647298;
@@ -20,13 +22,15 @@ body[data-theme="theme2"] {
     --header-font: #000000;
     --buttons: #d4cccf;
     --button: #e5e4e1;
-    --button-shadow: #b7b0ad;
+    --shadow-num: #b7b0ad;
+    --shadow-del: #477b80;
+    --shadow-result: #cf7636;
     --button-font: #000000;
     --button-hover: #ffffff;
     --button-del: #67b3ba;
     --button-del-font: #ffffff;
     --result: #eeeeee;
-    --result-font: #000000;
+    --result-font: #ffffff;
 }
 
 body[data-theme="theme3"] {
@@ -35,13 +39,15 @@ body[data-theme="theme3"] {
     --header-font: #fce14c;
     --buttons: #1e0836;
     --button: #341a51;
-    --button-shadow: #602876;
+    --shadow-num: #602876;
+    --shadow-del: #602876;
+    --shadow-result: #82dbd7;
     --button-font: #fce14c;
     --button-hover: #804ec2;
     --button-del: #6934ae;
     --button-del-font: #ffffff;
     --result: #1e0836;
-    --result-font: #fce14c;
+    --result-font: #17062a;
 }
 
 * {
@@ -51,7 +57,7 @@ body[data-theme="theme3"] {
 }
 
 body {
-    min-width: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -66,7 +72,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 35%;
+    width: 40%;
 }
 
 #header {
@@ -116,6 +122,7 @@ body {
     border-radius: 100px;
     cursor: pointer;
     position: relative;
+    transition: .5s;
 }
 
 #themes .button-change .circle {
@@ -143,6 +150,7 @@ body {
 
 #result h1 {
     font-size: 38px;
+    color: var(--header-font);
 }
 
 #buttons {
@@ -156,6 +164,10 @@ body {
     gap: 15px;
 }
 
+#buttons .num, #buttons .op {
+    box-shadow: 0px 4px var(--shadow-num);
+}
+
 #buttons button:hover.num {
     background-color: var(--button-hover);
 }
@@ -166,12 +178,14 @@ body {
 
 #buttons .result {
     background-color: var(--theme-color);
-    color: var(--button-del-font);
+    color: var(--result-font);
+    box-shadow: 0px 4px var(--shadow-result);
 }
 
 #buttons .del, #buttons .reset {
     color: var(--button-del-font);
     background-color: var(--button-del);
+    box-shadow: 0px 4px var(--shadow-del);
 }
 
 #buttons button {
@@ -186,6 +200,7 @@ body {
 }
 
 .attribution {
+    margin: 10px 0px;
     color: var(--header-font);
     font-size: 20px;
 }
@@ -196,12 +211,22 @@ body {
 
 @media (max-width: 1024px) {
     #calculator {
-        width: 55%;
+        width: 60%;
     }
 }
 
 @media (max-width: 768px) {
     #calculator {
-        width: 65%;
+        width: 70%;
+    }
+
+    .attribution {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 460px) {
+    #calculator {
+        width: 80%;
     }
 }

@@ -15,30 +15,46 @@ function updateScreen() {
     operation.textContent = text + " " + current || "0";
 }
 
+function inputNumber(value) {
+    if (justCalculed) {
+        expression = [];
+        current = "";
+        justCalculed = false;
+    }
+
+    if (value === "." && current.includes(".")) return;
+
+    current += value;
+    updateScreen();
+}
+
+function inputOperator(op) {
+    if (current === "" && expression.length > 0) {
+        expression[expression.length - 1] = op;
+        updateScreen();
+        return
+    }
+
+    if (current === "") return;
+
+    expression.push(current);
+    expression.push(op);
+
+    current = "";
+    updateScreen();
+}
+
 numbers.forEach(btn => {
     btn.addEventListener('click', () => {
-        if (justCalculed) {
-            expression = [];
-            current = "";
-            justCalculed = false;
-        }
-
-        if (btn.textContent === "." && current.includes(".")) return;
-
-        current += btn.textContent;
-        updateScreen();
+        inputNumber(btn.textContent);
+        btn.blur();
     })
 })
 
 operators.forEach(btn => {
     btn.addEventListener('click', () => {
-        if (current === "") return;
-
-        expression.push(current);
-        expression.push(btn.textContent);
-
-        current = "";
-        updateScreen();
+        inputOperator(btn.textContent);
+        btn.blur();
     })
 })
 
@@ -46,6 +62,10 @@ operators.forEach(btn => {
 function calculate() {
     if (current !== ""){
         expression.push(current);
+    }
+
+    if (expression.length < 3) {
+        return current || "0";
     }
 
     let exp = [...expression];
@@ -69,7 +89,7 @@ function calculate() {
 
     let resp = parseFloat(exp[0]);
 
-    for (let i = 1; i < exp.length; i+=2) {
+    for (let i = 1; i < exp.length; i += 2) {
         let operator = exp[i];
         let value = parseFloat(exp[i+1]);
 
@@ -115,4 +135,37 @@ btnEqual.addEventListener('click', () => {
     let res = calculate();
     operation.textContent = res;
     justCalculed = true;
+})
+
+// KEYBOARD INPUT
+document.addEventListener('keydown', (e) => {
+    const key = e.key;
+
+    // Numbers
+    if (/^[0-9]$/.test(key)) {
+        inputNumber(key);
+    } 
+    
+    else if (key === ".") {
+        inputNumber(".");
+    } 
+    
+    else if (["+", "-", "*", "/"].includes(key)) {
+        let op = key === "*" ? "x" : key;
+        inputOperator(op);
+    } 
+    
+    else if (key === "Enter") {
+        let res = calculate();
+        operation.textContent = res;
+        justCalculed = true;
+    } 
+    
+    else if (key === "Backspace") {
+        del();
+    } 
+    
+    else if (key === "Escape") {
+        reset();
+    }
 })

@@ -5,7 +5,8 @@
 
 🚀 Challenge by [Frontend Mentor](https://www.frontendmentor.io?ref=challenge) <br>
 👩🏻‍💻 Coded by [Karina Vicente](https://github.com/kahvicentee) <br>
-🌐 Here you can see this [Project](https://kahvicentee.github.io/calculatorApp/)
+🌐 Here you can see this [Project](https://kahvicentee.github.io/calculatorApp/) <br>
+📅 Completed on April 17th, 2026
 <br>
 
 ## 🔧 Built with
