@@ -139,6 +139,10 @@ btnEqual.addEventListener('click', () => {
 
 // KEYBOARD INPUT
 document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === "BUTTON") {
+        e.target.blur();
+    }
+
     const key = e.key;
 
     // Numbers
